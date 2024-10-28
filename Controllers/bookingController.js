@@ -4,7 +4,8 @@ import sendEmail from "../Utils/mailer.js";
 export const bookService = async (req, res) => {
   try {
     const { service, date } = req.body;
-    const booking = new Booking({ user: req.user.id, service, date });
+
+   const booking = new Booking({ user: req.user._id, service, date });
     await booking.save();
 
     //send mail notification
